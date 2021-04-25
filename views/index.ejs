@@ -15,7 +15,7 @@
                     <nav>
                         <ul class="flex flex-center">
                             <li class="active"><a href="#">Home</a></li>
-                            <li><a href="/product">Products</a></li>
+                            <li><a href="#">Products</a></li>
                             <li><a href="#">Contact</a></li>
                             <li><a href="#">About</a></li>
                             <li><a href="#">FAQs</a></li>
@@ -156,26 +156,35 @@
                                     <img src="<%= product.image %>" alt="Product Image">
 
                                     <div class="text-center">
+
                                         <a href="">
                                             <h4>
                                                 <%= product.name %>
                                             </h4>
                                         </a>
+
                                         <div class="ratings-container">
+
                                             <p>
                                                 <%= product.rating %>
                                             </p>
+
                                             <p class="stars space"><i class="fas fa-star"></i><i
                                                     class="fas fa-star"></i><i class="fas fa-star"></i><i
                                                     class="fas fa-star"></i><i class="fas fa-star"></i>
                                             </p>
+
                                         </div>
+
                                         <p class=" space"><del>
                                                 $<%= product.initial_price %>
                                             </del>&nbsp;<span>
                                                 $<%= product.final_price %>
-                                            </span> </p>
-                                        <button class="btn btn-cart">ADD TO CART</button>
+                                            </span>
+                                        </p>
+
+                                        <a href="/<%= product.id %>" class="btn btn-cart">View Product</a>
+
                                     </div>
 
                                 </div>
