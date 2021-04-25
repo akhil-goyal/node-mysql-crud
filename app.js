@@ -27,7 +27,7 @@ connection.connect(err => {
 });
 
 router.get("/", (req,res) => {
-    res.send('Namaste!');
+   res.render('index');
 })
 
 app.use('/', router);
