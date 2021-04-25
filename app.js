@@ -23,11 +23,39 @@ connection.connect(err => {
         if (err) throw err;
         // console.log("Tables ==> ", results);
     });
-    
+
 });
 
-router.get("/", (req,res) => {
-   res.render('index');
+router.get("/", (req, res) => {
+
+    const query = "SELECT * FROM products ORDER BY id ASC";
+
+    // Query to fetch all data from a table in ascending order.
+    connection.query(query, (err, results) => {
+        if (err) throw err;
+        // console.log('DATA : ', results);
+        res.render('index', { products: results });
+    });
+
+});
+
+router.get("/add-product", (req, res) => {
+    res.render('add-product');
+});
+
+router.post('/create-product', (req, res) => {
+
+    const query = `INSERT INTO products (name,description,initial_price,final_price) VALUES(("${req.body.name}"),("${req.body.description}"),("${req.body.initialPrice}"),("${req.body.finalPrice}"))`;
+
+    // Query to store data in a table.
+    connection.query(query, (err, results) => {
+        if (err) throw err;
+        res.writeHead(302, {
+            location: "/"
+        });
+        res.end();
+    });
+
 })
 
 app.use('/', router);

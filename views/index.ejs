@@ -1,1 +1,7 @@
-<h1>Hello from EJS ...</h1>
+<ul>
+    <% products.forEach((product, index)=> { %>
+
+        <li><%= product.name %></li>
+
+        <% }) %>
+</ul>
