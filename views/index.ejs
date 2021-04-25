@@ -101,10 +101,9 @@
                     <h3>All Products</h3>
                     <p><i>Add bestselling products to weekly line up</i></p>
                     <div class="text-right">
-                        <a href="#">+ New Product</a>
+                        <button class="add-product">+ New Product</button>
                     </div>
                 </div>
-
 
                 <!-- ********************* TOGGLE HIDDEN ********************* -->
 
@@ -132,6 +131,9 @@
                             </div>
                             <div class="shop-now">
                                 <button type="submit">Save Product</button>
+                            </div>
+                            <div class="cancel-btn">
+                                <p>Cancel</p>
                             </div>
                         </form>
 
@@ -216,25 +218,15 @@
 
             window.addEventListener("DOMContentLoaded", function () {
 
+                document.querySelector('.add-product').addEventListener('click', (e) => {
+                    const productBox = document.querySelector('#add-new-product');
+                    productBox.classList.remove('hidden');
+                });
 
-                // const clickHandler = function (event) {
-
-                //     console.log(event.currentTarget.id);
-                //     // fetch("/delete-colour", {
-                //     //     method: "POST",
-                //     //     headers: {
-                //     //         Accept: "application/json",
-                //     //         "content-type": "application/json",
-                //     //     },
-                //     //     body: JSON.stringify({ id: event.currentTarget.id }),
-                //     // })
-                //     //     .then(() => {
-                //     //         window.location.reload();
-                //     //     })
-                //     //     .catch((err) => {
-                //     //         console.log("Error", err);
-                //     //     });
-                // };
+                document.querySelector('.cancel-btn').addEventListener('click', () => {
+                    const productBox = document.querySelector('#add-new-product');
+                    productBox.classList.add('hidden');
+                });
 
                 document.addEventListener('click', (e) => {
 
@@ -258,20 +250,6 @@
                     }
 
                 })
-
-                // const clickHandler = (e) => {
-                //     console.log('bsczj;a');
-                // }
-
-
-                // Array.from(document.getElementsByClassName("product delete")).forEach((btn) => {
-                //     btn.addEventListener("click", clickHandler, false);
-                // });
-
-                // btn.addEventListener("click", (e) => {
-                //     console.log('widfihlad')
-                // });
-
 
             });
 
