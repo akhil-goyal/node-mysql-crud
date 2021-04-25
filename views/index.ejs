@@ -15,7 +15,7 @@
                     <nav>
                         <ul class="flex flex-center">
                             <li class="active"><a href="#">Home</a></li>
-                            <li><a href="./pages/product-detail.html">Products</a></li>
+                            <li><a href="/product">Products</a></li>
                             <li><a href="#">Contact</a></li>
                             <li><a href="#">About</a></li>
                             <li><a href="#">FAQs</a></li>
@@ -37,6 +37,7 @@
     </header>
 
     <main>
+
         <section class="main-banner">
 
             <div class="container">
@@ -97,12 +98,15 @@
             <div class="container">
 
                 <div class="top-product-heading">
-                    <h3>Top Products</h3>
+                    <h3>All Products</h3>
                     <p><i>Add bestselling products to weekly line up</i></p>
                     <div class="text-right">
                         <a href="#">+ New Product</a>
                     </div>
                 </div>
+
+
+                <!-- ********************* TOGGLE HIDDEN ********************* -->
 
                 <!-- START: Add New Product -->
                 <div class="text-center hidden" id="add-new-product">
@@ -141,110 +145,45 @@
 
                     <div class="grid grid-cols-5 grid-gap-1">
 
-                        <div class="product">
+                        <%if (products.length> 0) { %> <% products.forEach((product, i)=> { %>
 
-                            <div class="text-right">
-                                <a href=""><i class="far fa-trash-alt color-red"></i></a>
-                            </div>
+                                <div class="product">
 
-                            <img src="images/product-1.jpg" alt="">
+                                    <div class="text-right">
+                                        <a href=""><i class="far fa-trash-alt color-red"></i></a>
+                                    </div>
 
-                            <div class="text-center">
-                                <a href="">
-                                    <h4>Lorem ipsum dolor sit. Lorem..</h4>
-                                </a>
-                                <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </p>
-                                <p class=" space"><del>$14.12</del>&nbsp;<span>$11.12</span> </p>
-                                <button class="btn btn-cart">ADD TO CART</button>
-                            </div>
+                                    <img src="<%= product.image %>" alt="Product Image">
 
-                        </div>
+                                    <div class="text-center">
+                                        <a href="">
+                                            <h4>
+                                                <%= product.name %>
+                                            </h4>
+                                        </a>
+                                        <div class="ratings-container">
+                                            <p>
+                                                <%= product.rating %>
+                                            </p>
+                                            <p class="stars space"><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                                            </p>
+                                        </div>
+                                        <p class=" space"><del>
+                                                $<%= product.initial_price %>
+                                            </del>&nbsp;<span>
+                                                $<%= product.final_price %>
+                                            </span> </p>
+                                        <button class="btn btn-cart">ADD TO CART</button>
+                                    </div>
 
-                        <div class="product">
+                                </div>
 
-                            <div class="text-right">
-                                <a href=""><i class="far fa-trash-alt color-red"></i></a>
-                            </div>
-
-                            <img src="./images/products/product-1.jpg" alt="">
-
-                            <div class="text-center">
-                                <a href="">
-                                    <h4>Lorem ipsum dolor sit. Lorem..</h4>
-                                </a>
-                                <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </p>
-                                <p class=" space"><del>$14.12</del>&nbsp;<span>$11.12</span> </p>
-                                <button class="btn btn-cart">ADD TO CART</button>
-                            </div>
-
-                        </div>
-
-                        <div class="product">
-
-                            <div class="text-right">
-                                <a href=""><i class="far fa-trash-alt color-red"></i></a>
-                            </div>
-
-                            <img src="./images/products/product-1.jpg" alt="">
-
-                            <div class="text-center">
-                                <a href="">
-                                    <h4>Lorem ipsum dolor sit. Lorem..</h4>
-                                </a>
-                                <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </p>
-                                <p class=" space"><del>$14.12</del>&nbsp;<span>$11.12</span> </p>
-                                <button class="btn btn-cart">ADD TO CART</button>
-                            </div>
-
-                        </div>
-
-                        <div class="product">
-
-                            <div class="text-right">
-                                <a href=""><i class="far fa-trash-alt color-red"></i></a>
-                            </div>
-
-                            <img src="./images/products/product-1.jpg" alt="">
-
-                            <div class="text-center">
-                                <a href="">
-                                    <h4>Lorem ipsum dolor sit. Lorem..</h4>
-                                </a>
-                                <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </p>
-                                <p class=" space"><del>$14.12</del>&nbsp;<span>$11.12</span> </p>
-                                <button class="btn btn-cart">ADD TO CART</button>
-                            </div>
-
-                        </div>
-
-                        <div class="product">
-
-                            <div class="text-right">
-                                <a href=""><i class="far fa-trash-alt color-red"></i></a>
-                            </div>
-
-                            <img src="./images/products/product-1.jpg" alt="">
-
-                            <div class="text-center">
-                                <a href="">
-                                    <h4>Lorem ipsum dolor sit. Lorem..</h4>
-                                </a>
-                                <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </p>
-                                <p class=" space"><del>$14.12</del>&nbsp;<span>$11.12</span> </p>
-                                <button class="btn btn-cart">ADD TO CART</button>
-                            </div>
-
-                        </div>
+                                <% }) %>
+                                    <% } else { %>
+                                        <h1>No Products Found.</h1>
+                                        <% } %>
 
                     </div>
 

@@ -1,0 +1,146 @@
+<%- include('partials/header') %>
+
+    <header>
+        <div class="container">
+            <div class="header grid grid-cols-3">
+                <div class="logo">
+                    <a href="../index.html"><b>Logo</b></a>
+                </div>
+                <div class="navigation text-center">
+                    <nav>
+                        <ul class="flex flex-center">
+                            <li><a href="/">Home</a></li>
+                            <li class="active"><a href="#">Products</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="cart text-right">
+                    <a href="javascript:void(0)" class="contact"><b>Call us:</b> +1 1234 4321 12</a>
+                    <a href="#"><i class="fas fa-search"></i></a>
+                    <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="product-detail">
+            <div class="container">
+                <div class="grid grid-cols-2 details">
+                    <div class="image text text-center">
+                        <img src="images/product-1.jpg" alt="">
+                    </div>
+                    <div>
+
+                        <!-- HIDDEN WILL BE ADDED HERE .. -->
+
+                        <div class="product-content" id="add-content">
+                            <div class="grid grid-cols-2">
+                                <h2 class="space">Lorem ipsum dolor sit. Lorem..</h2>
+                                <i class="fas fa-pencil-alt edit-content"></i>
+                            </div>
+                            <p class="space">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil distinctio
+                                eligendi, tempora
+                                quia deleniti libero corrupti eaque molestiae asperiores odit ab fuga aliquam autem sunt
+                                obcaecati aliquid iusto alias rem. Lorem, ipsum dolor sit amet consectetur adipisicing
+                                elit.
+                                Nihil distinctio eligendi, tempora
+                                quia deleniti libero corrupti eaque molestiae asperiores odit ab fuga aliquam autem sunt
+                                obcaecati aliquid iusto alias rem.</p>
+                            <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </p>
+                            <p class=" space"><del>$14.12</del>&nbsp;<span>$11.12</span> </p>
+                            <button class="btn btn-main-cart">ADD TO CART</button>
+                            <!-- <button class="btn btn-main-cart-cancel">DELETE</button> -->
+                        </div>
+
+
+                        <!-- HIDDEN WILL BE REMOVED FROM HERE .. -->
+
+                        <!-- START: EDIT PRODUCT -->
+                        <div class="product-content addProduct hidden" id="edit-content">
+                            <div>
+                                <input class="input-text" type="text" placeholder="Title" required
+                                    value="Lorem ipsum dolor sit. Lorem..">
+                            </div>
+                            <div><textarea class="input-text" rows="2" required
+                                    placeholder="Description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil distinctio obcaecati aliquid iusto alias rem. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil distinctio eligendi, temporaquia deleniti libero corrupti eaque molestiae asperiores odit ab fuga aliquam autem suntobcaecati aliquid iusto alias rem.</textarea>
+                            </div>
+                            <div><input class="input-text" value="14.12" required placeholder="Retail Price"
+                                    type="text">
+                            </div>
+                            <div><input class="input-text" value="11.12" required placeholder="Selling Price"
+                                    type="text">
+                            </div>
+                            <div>
+
+                                <!-- REFRESH PAGE ON UPDATE CLICK ... -->
+
+                                <button class="btn btn-main-cart">UPDATE</button>
+
+                                <!-- REFRESH PAGE ON CANCEL CLICK ... -->
+
+                                <button class="btn btn-main-cart-cancel">CANCEL</button>
+                            </div>
+                        </div>
+                        <!-- END: EDIT PRODUCT -->
+                    </div>
+                </div>
+        </section>
+        
+        <section class="recent-products">
+            <div class="container">
+                <div class="top-product-heading">
+                    <h3>Recent Products</h3>
+                </div>
+                <div class="products">
+                    <div class="grid grid-cols-5 grid-gap-1">
+                        <div class="product">
+                            <div class="text-right">
+                                <a href=""><i class="far fa-trash-alt color-red"></i></a>
+                            </div>
+                            <img src="images/product-1.jpg" alt="">
+                            <div class="text-center">
+                                <a href="">
+                                    <h4>Lorem ipsum dolor sit. Lorem..</h4>
+                                </a>
+                                <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </p>
+                                <p class=" space"><del>$14.12</del>&nbsp;<span>$11.12</span> </p>
+                                <button class="btn btn-cart">ADD TO CART</button>
+                            </div>
+                        </div>
+                        <div class="product">
+                            <div class="text-right">
+                                <a href=""><i class="far fa-trash-alt color-red"></i></a>
+                            </div>
+                            <img src="images/product-1.jpg" alt="">
+                            <div class="text-center">
+                                <a href="">
+                                    <h4>Lorem ipsum dolor sit. Lorem..</h4>
+                                </a>
+                                <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </p>
+                                <p class=" space"><del>$14.12</del>&nbsp;<span>$11.12</span> </p>
+                                <button class="btn btn-cart">ADD TO CART</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="product-detail-footer">
+        <div class="container">
+            <p>&copy; 2021. Project created by Akhil Goyal and Nitish Kumar.</p>
+        </div>
+    </footer>
+
+    <%- include('partials/footer') %>

@@ -402,3 +402,23 @@ footer p {
     cursor: pointer;
     text-align: right;
 }
+
+/* .product-detail {
+    height: 80vh;
+} */
+
+.product-detail-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+} 
+
+.ratings-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ratings-container p{
+    margin: 0em 0.1em;
+}

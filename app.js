@@ -33,14 +33,13 @@ router.get("/", (req, res) => {
     // Query to fetch all data from a table in ascending order.
     connection.query(query, (err, results) => {
         if (err) throw err;
-        // console.log('DATA : ', results);
         res.render('index', { products: results });
     });
 
 });
 
-router.get("/add-product", (req, res) => {
-    res.render('add-product');
+router.get("/product", (req, res) => {
+    res.render('product-details');
 });
 
 router.post('/create-product', (req, res) => {
