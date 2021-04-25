@@ -150,7 +150,7 @@
                                 <div class="product">
 
                                     <div class="text-right">
-                                        <a href=""><i class="far fa-trash-alt color-red"></i></a>
+                                        <span class="delete" id="<%= product.id %>">&#10005;</span>
                                     </div>
 
                                     <img src="<%= product.image %>" alt="Product Image">
@@ -211,3 +211,68 @@
     </footer>
 
     <%- include('partials/footer') %>
+
+        <script>
+
+            window.addEventListener("DOMContentLoaded", function () {
+
+
+                // const clickHandler = function (event) {
+
+                //     console.log(event.currentTarget.id);
+                //     // fetch("/delete-colour", {
+                //     //     method: "POST",
+                //     //     headers: {
+                //     //         Accept: "application/json",
+                //     //         "content-type": "application/json",
+                //     //     },
+                //     //     body: JSON.stringify({ id: event.currentTarget.id }),
+                //     // })
+                //     //     .then(() => {
+                //     //         window.location.reload();
+                //     //     })
+                //     //     .catch((err) => {
+                //     //         console.log("Error", err);
+                //     //     });
+                // };
+
+                document.addEventListener('click', (e) => {
+
+                    if (e.target.className === 'delete') {
+
+                        fetch("/delete-product", {
+                            method: "POST",
+                            headers: {
+                                Accept: "application/json",
+                                "content-type": "application/json",
+                            },
+                            body: JSON.stringify({ id: e.target.id }),
+                        })
+                            .then(() => {
+                                window.location.reload();
+                            })
+                            .catch((err) => {
+                                console.log("Error while deleting product : ", err);
+                            });
+
+                    }
+
+                })
+
+                // const clickHandler = (e) => {
+                //     console.log('bsczj;a');
+                // }
+
+
+                // Array.from(document.getElementsByClassName("product delete")).forEach((btn) => {
+                //     btn.addEventListener("click", clickHandler, false);
+                // });
+
+                // btn.addEventListener("click", (e) => {
+                //     console.log('widfihlad')
+                // });
+
+
+            });
+
+        </script>

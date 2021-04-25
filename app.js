@@ -48,6 +48,20 @@ router.get("/:id", (req, res) => {
 
 });
 
+
+router.post("/delete-product", (req, res) => {
+
+    const query = `DELETE FROM products WHERE id = ${req.body.id}`;
+
+    connection.query(query, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.writeHead(302);
+        res.end();
+    });
+});
+
 // router.post('/create-product', (req, res) => {
 
 //     const query = `INSERT INTO products (name,description,initial_price,final_price) VALUES(("${req.body.name}"),("${req.body.description}"),("${req.body.initialPrice}"),("${req.body.finalPrice}"))`;
