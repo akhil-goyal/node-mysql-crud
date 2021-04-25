@@ -1,11 +1,265 @@
 <%- include('partials/header') %>
 
-<ul>
-    <% products.forEach((product, index)=> { %>
+    <header>
 
-        <li><%= product.name %></li>
+        <div class="container">
 
-        <% }) %>
-</ul>
+            <div class="header grid grid-cols-3">
 
-<%- include('partials/footer') %>
+                <div class="logo">
+                    <a href="#"><b>Logo</b></a>
+                </div>
+
+                <div class="navigation text-center">
+
+                    <nav>
+                        <ul class="flex flex-center">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="./pages/product-detail.html">Products</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </nav>
+
+                </div>
+
+                <div class="cart text-right">
+                    <a href="javascript:void(0)" class="contact"><b>Call us:</b> +1 1234 4321 12</a>
+                    <a href="#"><i class="fas fa-search"></i></a>
+                    <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main>
+        <section class="main-banner">
+
+            <div class="container">
+
+                <div class="text-content text-left">
+                    <div class="text">
+                        <p>NOT FRIED NOT BAKED</p>
+                        <h1>Organic Fruits<br />Summer Drinks</h1>
+                        <p><i>fresh New pack Brusting Fruits</i></p>
+                    </div>
+                    <div class="shop-now">
+                        <button class="btn btn-primary">SHOP NOW</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="info">
+
+            <div class="container">
+
+                <div class="grid grid-cols-4 info-content">
+
+                    <div>
+                        <i class="fas fa-shipping-fast"></i>
+                        <p class="main-line"><b>Free Shipping</b></p>
+                        <p>On all orders over $64.12</p>
+                    </div>
+
+                    <div>
+                        <i class="fas fa-exchange-alt"></i>
+                        <p><b>Free Returns</b></p>
+                        <p>Returns are free within 4 days</p>
+                    </div>
+
+                    <div>
+                        <i class="fas fa-shield-alt"></i>
+                        <p><b>100% Payment Secure</b></p>
+                        <p>Your payment are secure with us.</p>
+                    </div>
+
+                    <div>
+                        <i class="fas fa-phone-square-alt"></i>
+                        <p><b>Support 24/7</b></p>
+                        <p>Contact us 24 hours/ day</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="products">
+
+            <div class="container">
+
+                <div class="top-product-heading">
+                    <h3>Top Products</h3>
+                    <p><i>Add bestselling products to weekly line up</i></p>
+                    <div class="text-right">
+                        <a href="#">+ New Product</a>
+                    </div>
+                </div>
+
+                <!-- START: Add New Product -->
+                <div class="text-center hidden" id="add-new-product">
+
+                    <div class="smallContainer add-new-product shadow">
+
+                        <form action="" class="addProduct text-center">
+                            <h3>Add New Product</h3>
+                            <div class="form-input">
+                                <input class="input-text" required placeholder="Title" type="text">
+                            </div>
+                            <div>
+                                <textarea rows="1" class="input-text" required placeholder="Description"></textarea>
+                            </div>
+                            <div>
+                                <input class="input-text" required placeholder="Retail Price" type="text">
+                            </div>
+                            <div>
+                                <input class="input-text" required placeholder="Selling Price" type="text">
+                            </div>
+                            <div>
+                                <input type="file">
+                            </div>
+                            <div class="shop-now">
+                                <button type="submit">Save Product</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+                <!-- END: Add New Product -->
+
+                <!-- START: Product List -->
+                <div class="products">
+
+                    <div class="grid grid-cols-5 grid-gap-1">
+
+                        <div class="product">
+
+                            <div class="text-right">
+                                <a href=""><i class="far fa-trash-alt color-red"></i></a>
+                            </div>
+
+                            <img src="images/product-1.jpg" alt="">
+
+                            <div class="text-center">
+                                <a href="">
+                                    <h4>Lorem ipsum dolor sit. Lorem..</h4>
+                                </a>
+                                <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </p>
+                                <p class=" space"><del>$14.12</del>&nbsp;<span>$11.12</span> </p>
+                                <button class="btn btn-cart">ADD TO CART</button>
+                            </div>
+
+                        </div>
+
+                        <div class="product">
+
+                            <div class="text-right">
+                                <a href=""><i class="far fa-trash-alt color-red"></i></a>
+                            </div>
+
+                            <img src="./images/products/product-1.jpg" alt="">
+
+                            <div class="text-center">
+                                <a href="">
+                                    <h4>Lorem ipsum dolor sit. Lorem..</h4>
+                                </a>
+                                <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </p>
+                                <p class=" space"><del>$14.12</del>&nbsp;<span>$11.12</span> </p>
+                                <button class="btn btn-cart">ADD TO CART</button>
+                            </div>
+
+                        </div>
+
+                        <div class="product">
+
+                            <div class="text-right">
+                                <a href=""><i class="far fa-trash-alt color-red"></i></a>
+                            </div>
+
+                            <img src="./images/products/product-1.jpg" alt="">
+
+                            <div class="text-center">
+                                <a href="">
+                                    <h4>Lorem ipsum dolor sit. Lorem..</h4>
+                                </a>
+                                <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </p>
+                                <p class=" space"><del>$14.12</del>&nbsp;<span>$11.12</span> </p>
+                                <button class="btn btn-cart">ADD TO CART</button>
+                            </div>
+
+                        </div>
+
+                        <div class="product">
+
+                            <div class="text-right">
+                                <a href=""><i class="far fa-trash-alt color-red"></i></a>
+                            </div>
+
+                            <img src="./images/products/product-1.jpg" alt="">
+
+                            <div class="text-center">
+                                <a href="">
+                                    <h4>Lorem ipsum dolor sit. Lorem..</h4>
+                                </a>
+                                <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </p>
+                                <p class=" space"><del>$14.12</del>&nbsp;<span>$11.12</span> </p>
+                                <button class="btn btn-cart">ADD TO CART</button>
+                            </div>
+
+                        </div>
+
+                        <div class="product">
+
+                            <div class="text-right">
+                                <a href=""><i class="far fa-trash-alt color-red"></i></a>
+                            </div>
+
+                            <img src="./images/products/product-1.jpg" alt="">
+
+                            <div class="text-center">
+                                <a href="">
+                                    <h4>Lorem ipsum dolor sit. Lorem..</h4>
+                                </a>
+                                <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </p>
+                                <p class=" space"><del>$14.12</del>&nbsp;<span>$11.12</span> </p>
+                                <button class="btn btn-cart">ADD TO CART</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- END: Product List -->
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2021. Project created by Akhil Goyal and Nitish Kumar.</p>
+        </div>
+    </footer>
+
+    <%- include('partials/footer') %>
