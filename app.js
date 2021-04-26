@@ -39,8 +39,6 @@ router.get("/", (req, res) => {
 // Route to display selected product & fetch product by ID.
 router.get("/:id", (req, res) => {
 
-    console.log('Product ID : ', req.params.id);
-
     const query = `SELECT * FROM products WHERE id = ${req.params.id}`;
 
     connection.query(query, (err, result) => {
