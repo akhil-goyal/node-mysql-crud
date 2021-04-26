@@ -29,16 +29,14 @@
     <main>
         <section class="product-detail">
             <div class="container">
+
+                <div class="id-container">
+                    <%= product.id %>
+                </div>
+
                 <div class="grid grid-cols-2 details">
                     <div class="image text text-center">
                         <img src="uploads/<%= product.image %>" alt="Product Image">
-                    </div>
-                    <div>
-
-                        <div class="id-container">
-                            <%= product.id %>
-                        </div>
-
                     </div>
 
                     <!-- HIDDEN WILL BE ADDED HERE .. -->
@@ -59,17 +57,9 @@
                             <%= product.description %>
                         </p>
 
-                        <div class="ratings-container">
-
-                            <p>
-                                <%= product.rating %>
-                            </p>
-
-                            <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </p>
-
-                        </div>
+                        <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </p>
 
                         <p class=" space"><del>$<%= product.initial_price %></del>&nbsp;<span>$<%= product.final_price
                                     %></span> </p>

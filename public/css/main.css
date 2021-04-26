@@ -327,7 +327,7 @@ del {
     padding: 1em 0;
 }
 
-.addProduct .input-text {
+ .input-text {
     padding: 0.3em;
     font-size: 15px;
     border: 0;
@@ -337,7 +337,7 @@ del {
     font-family: inherit;
 }
 
-.addProduct textarea {
+textarea {
     resize: vertical;
 }
 
@@ -425,4 +425,19 @@ footer p {
 
 .id-container {
     display: none;
+}
+
+.product-dashboard-img {
+    height: 200px !important;
+    margin-bottom: 1em;
+}
+
+.delete-btn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.delete {
+    cursor: pointer;
 }

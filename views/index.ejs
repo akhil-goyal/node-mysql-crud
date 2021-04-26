@@ -156,12 +156,15 @@
                                 <div class="product">
 
                                     <div class="text-right">
+                                        <!-- <button class="delete delete-btn" id="<%= product.id %>"><i
+                                                class="far fa-trash-alt color-red"></i></button> -->
                                         <span class="delete" id="<%= product.id %>">&#10005;</span>
                                     </div>
 
-                                    <img src="uploads/<%= product.image %>" alt="Product Image">
-
                                     <div class="text-center">
+
+                                        <img class="product-dashboard-img" src="uploads/<%= product.image %>"
+                                            alt="Product Image">
 
                                         <a href="">
                                             <h4>
@@ -264,20 +267,24 @@
 
                     if (e.target.className === 'delete') {
 
-                        fetch("/delete-product", {
-                            method: "POST",
-                            headers: {
-                                Accept: "application/json",
-                                "content-type": "application/json",
-                            },
-                            body: JSON.stringify({ id: e.target.id }),
-                        })
-                            .then(() => {
-                                window.location.reload();
+                        if (confirm('Are you sure?')) {
+
+                            fetch("/delete-product", {
+                                method: "POST",
+                                headers: {
+                                    Accept: "application/json",
+                                    "content-type": "application/json",
+                                },
+                                body: JSON.stringify({ id: e.target.id }),
                             })
-                            .catch((err) => {
-                                console.log("Error while deleting product : ", err);
-                            });
+                                .then(() => {
+                                    window.location.reload();
+                                })
+                                .catch((err) => {
+                                    console.log("Error while deleting product : ", err);
+                                });
+
+                        }
 
                     }
 
