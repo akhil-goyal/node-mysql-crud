@@ -1,9 +1,9 @@
 const express = require('express');
 const mysql = require('mysql');
-const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const path = require('path');
+const multer = require('multer');
 
 const app = express();
 const router = express.Router();
@@ -48,7 +48,6 @@ router.get("/:id", (req, res) => {
 
 });
 
-
 router.post("/delete-product", (req, res) => {
 
     const query = `DELETE FROM products WHERE id = ${req.body.id}`;
@@ -62,20 +61,29 @@ router.post("/delete-product", (req, res) => {
     });
 });
 
-// router.post('/create-product', (req, res) => {
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
 
-//     const query = `INSERT INTO products (name,description,initial_price,final_price) VALUES(("${req.body.name}"),("${req.body.description}"),("${req.body.initialPrice}"),("${req.body.finalPrice}"))`;
+const upload = multer({ storage: storage });
 
-//     // Query to store data in a table.
-//     connection.query(query, (err, results) => {
-//         if (err) throw err;
-//         res.writeHead(302, {
-//             location: "/"
-//         });
-//         res.end();
-//     });
+router.post('/create-product', upload.single("productImage"), (req, res) => {
 
-// })
+    console.dir(req.body);
+    console.log(req.file);
+
+    const query = `INSERT INTO products (name,description,initial_price,final_price, image) VALUES(("${req.body.name}"),("${req.body.description}"),("${req.body.initialPrice}"),("${req.body.finalPrice}"),("${req.file.filename}"))`;
+
+    connection.query(query, (err, results) => {
+        if (err) throw err;
+        res.sendStatus(200);
+    });
+});
 
 app.use('/', router);
 

@@ -112,22 +112,26 @@
 
                     <div class="smallContainer add-new-product shadow">
 
-                        <form action="" class="addProduct text-center">
+                        <form id="product-form" class="addProduct text-center">
                             <h3>Add New Product</h3>
                             <div class="form-input">
-                                <input class="input-text" required placeholder="Title" type="text">
+                                <input id="name" class="input-text" name="name" required placeholder="Title"
+                                    type="text">
                             </div>
                             <div>
-                                <textarea rows="1" class="input-text" required placeholder="Description"></textarea>
+                                <textarea id="description" name="description" rows="1" class="input-text" required
+                                    placeholder="Description"></textarea>
                             </div>
                             <div>
-                                <input class="input-text" required placeholder="Retail Price" type="text">
+                                <input id="initialPrice" name="initialPrice" class="input-text" required
+                                    placeholder="Retail Price" type="text">
                             </div>
                             <div>
-                                <input class="input-text" required placeholder="Selling Price" type="text">
+                                <input id="finalPrice" name="finalPrice" class="input-text" required
+                                    placeholder="Selling Price" type="text">
                             </div>
                             <div>
-                                <input type="file">
+                                <input id="productImage" name="productImage" type="file">
                             </div>
                             <div class="shop-now">
                                 <button type="submit">Save Product</button>
@@ -217,6 +221,36 @@
         <script>
 
             window.addEventListener("DOMContentLoaded", function () {
+
+                const form = document.getElementById("product-form");
+
+                form.addEventListener("submit", (e) => {
+
+                    e.preventDefault();
+
+                    const productName = document.getElementById("name");
+                    const productDescription = document.getElementById("description");
+                    const productInitialPrice = document.getElementById("initialPrice");
+                    const productFinalPrice = document.getElementById("finalPrice");
+                    const productImage = document.getElementById("productImage");
+
+                    const formData = new FormData();
+
+                    formData.append("name", productName.value);
+                    formData.append("description", productDescription.value);
+                    formData.append("initialPrice", productInitialPrice.value);
+                    formData.append("finalPrice", productFinalPrice.value);
+                    formData.append("productImage", productImage.files[0]);
+
+                    fetch("http://localhost:8080/create-product", {
+                        method: "post",
+                        body: formData,
+                    })
+                        .then((res) => console.log(res))
+                        .catch((err) => ("Error occured", err));
+
+
+                });
 
                 document.querySelector('.add-product').addEventListener('click', (e) => {
                     const productBox = document.querySelector('#add-new-product');
