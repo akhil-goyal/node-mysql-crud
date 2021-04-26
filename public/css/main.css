@@ -422,3 +422,7 @@ footer p {
 .ratings-container p{
     margin: 0em 0.1em;
 }
+
+.id-container {
+    display: none;
+}

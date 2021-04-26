@@ -246,10 +246,8 @@
                         method: "post",
                         body: formData,
                     })
-                        .then((res) => console.log(res))
+                        .then((res) => window.location.reload())
                         .catch((err) => ("Error occured", err));
-
-
                 });
 
                 document.querySelector('.add-product').addEventListener('click', (e) => {

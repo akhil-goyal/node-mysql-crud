@@ -31,77 +31,82 @@
             <div class="container">
                 <div class="grid grid-cols-2 details">
                     <div class="image text text-center">
-                        <img src="<%= product.image %>" alt="Product Image">
+                        <img src="uploads/<%= product.image %>" alt="Product Image">
                     </div>
                     <div>
 
-                        <!-- HIDDEN WILL BE ADDED HERE .. -->
+                        <div class="id-container">
+                            <%= product.id %>
+                        </div>
 
-                        <div class="product-content" id="add-content">
+                    </div>
 
-                            <div class="grid grid-cols-2">
+                    <!-- HIDDEN WILL BE ADDED HERE .. -->
 
-                                <h2 class="space">
-                                    <%= product.name %>
-                                </h2>
+                    <div class="product-content addProduct" id="add-content">
 
-                                <i class="fas fa-pencil-alt edit-content"></i>
+                        <div class="grid grid-cols-2">
 
-                            </div>
+                            <h2 class="space">
+                                <%= product.name %>
+                            </h2>
 
-                            <p class="space">
-                                <%= product.description %>
+                            <i class="fas fa-pencil-alt edit-content"></i>
+
+                        </div>
+
+                        <p class="space">
+                            <%= product.description %>
+                        </p>
+
+                        <div class="ratings-container">
+
+                            <p>
+                                <%= product.rating %>
                             </p>
 
-                            <div class="ratings-container">
+                            <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </p>
 
-                                <p>
-                                    <%= product.rating %>
-                                </p>
-
-                                <p class="stars space"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                </p>
-
-                            </div>
-
-                            <p class=" space"><del>$<%= product.initial_price %></del>&nbsp;<span>$<%=
-                                        product.final_price %></span> </p>
-                            <button class="btn btn-main-cart">ADD TO CART</button>
-                            <!-- <button class="btn btn-main-cart-cancel">DELETE</button> -->
                         </div>
 
-                        <!-- HIDDEN WILL BE REMOVED FROM HERE .. -->
+                        <p class=" space"><del>$<%= product.initial_price %></del>&nbsp;<span>$<%= product.final_price
+                                    %></span> </p>
+                        <button class="btn btn-main-cart">ADD TO CART</button>
+                        <!-- <button class="btn btn-main-cart-cancel">DELETE</button> -->
+                    </div>
 
-                        <!-- START: EDIT PRODUCT -->
-                        <div class="product-content addProduct hidden" id="edit-content">
+                    <!-- HIDDEN WILL BE REMOVED FROM HERE .. -->
+
+                    <!-- START: EDIT PRODUCT -->
+                    <div class="product-content editProduct hidden" id="edit-content">
+                        <form id="product-update-form">
                             <div>
-                                <input class="input-text" type="text" placeholder="Title" required
+                                <input id="name" name="name" class="input-text" type="text" placeholder="Title" required
                                     value="<%= product.name %>">
                             </div>
-                            <div><textarea class="input-text" rows="2" required
-                                    placeholder="Description"><%= product.description %></textarea>
+                            <div><textarea id="description" name="description" class="input-text" rows="2" required
+                                    placeholder="Description"
+                                    value="<%= product.description %>"><%= product.description %></textarea>
                             </div>
-                            <div><input class="input-text" value="<%= product.initial_price %>" required
-                                    placeholder="Retail Price" type="text">
+                            <div><input id="initialPrice" name="initialPrice" class="input-text"
+                                    value="<%= product.initial_price %>" required placeholder="Retail Price"
+                                    type="text">
                             </div>
-                            <div><input class="input-text" value="<%= product.final_price %>" required
-                                    placeholder="Selling Price" type="text">
+                            <div><input id="finalPrice" name="finalPrice" class="input-text"
+                                    value="<%= product.final_price %>" required placeholder="Selling Price" type="text">
                             </div>
                             <div>
-
-                                <!-- REFRESH PAGE ON UPDATE CLICK ... -->
-
-                                <button class="btn btn-main-cart">UPDATE</button>
-
-                                <!-- REFRESH PAGE ON CANCEL CLICK ... -->
-
+                                <button type="submit" class="btn btn-main-cart">UPDATE</button>
                                 <button class="btn btn-main-cart-cancel">CANCEL</button>
                             </div>
-                        </div>
-                        <!-- END: EDIT PRODUCT -->
+                        </form>
                     </div>
+                    <!-- END: EDIT PRODUCT -->
+
                 </div>
+            </div>
         </section>
 
         <section class="recent-products">
@@ -156,3 +161,47 @@
     </footer>
 
     <%- include('partials/footer') %>
+
+        <script>
+
+            window.addEventListener("DOMContentLoaded", function () {
+
+                const form = document.querySelector('#product-update-form');
+
+                form.addEventListener('submit', (e) => {
+
+                    e.preventDefault();
+
+                    const productId = document.querySelector('.id-container').innerText.trim();
+                    const productName = document.getElementById("name").value;
+                    const productDescription = document.getElementById("description").value;
+                    const productInitialPrice = document.getElementById("initialPrice").value;
+                    const productFinalPrice = document.getElementById("finalPrice").value;
+
+                    const data = JSON.stringify({ productId, productName, productDescription, productInitialPrice, productFinalPrice });
+
+                    fetch("http://localhost:8080/update-product", {
+                        method: "post",
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: data
+                    })
+                        .then((res) => window.location = 'http://localhost:8080/')
+                        .catch((err) => ("Error occured", err));
+                });
+
+                document.querySelector('.edit-content').addEventListener('click', () => {
+                    document.querySelector('.editProduct').classList.remove('hidden');
+                    document.querySelector('.addProduct').classList.add('hidden');
+                });
+
+                document.querySelector('.btn-main-cart-cancel').addEventListener('click', () => {
+                    document.querySelector('.editProduct').classList.add('hidden');
+                    document.querySelector('.addProduct').classList.remove('hidden');
+                });
+
+            });
+
+        </script>
