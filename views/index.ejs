@@ -131,7 +131,7 @@
                                     placeholder="Selling Price" type="text">
                             </div>
                             <div>
-                                <input id="productImage" name="productImage" type="file">
+                                <input id="image" name="image" type="file">
                             </div>
                             <div class="shop-now">
                                 <button type="submit">Save Product</button>
@@ -159,7 +159,7 @@
                                         <span class="delete" id="<%= product.id %>">&#10005;</span>
                                     </div>
 
-                                    <img src="<%= product.image %>" alt="Product Image">
+                                    <img src="uploads/<%= product.image %>" alt="Product Image">
 
                                     <div class="text-center">
 
@@ -232,7 +232,7 @@
                     const productDescription = document.getElementById("description");
                     const productInitialPrice = document.getElementById("initialPrice");
                     const productFinalPrice = document.getElementById("finalPrice");
-                    const productImage = document.getElementById("productImage");
+                    const image = document.getElementById("image");
 
                     const formData = new FormData();
 
@@ -240,7 +240,7 @@
                     formData.append("description", productDescription.value);
                     formData.append("initialPrice", productInitialPrice.value);
                     formData.append("finalPrice", productFinalPrice.value);
-                    formData.append("productImage", productImage.files[0]);
+                    formData.append("image", image.files[0]);
 
                     fetch("http://localhost:8080/create-product", {
                         method: "post",

@@ -63,7 +63,7 @@ router.post("/delete-product", (req, res) => {
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/')
+        cb(null, 'public/uploads/')
     },
     filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now())
@@ -72,7 +72,7 @@ var storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post('/create-product', upload.single("productImage"), (req, res) => {
+router.post('/create-product', upload.single("image"), (req, res) => {
 
     console.dir(req.body);
     console.log(req.file);
